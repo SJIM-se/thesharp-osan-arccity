@@ -1,3 +1,7 @@
+// --- CONFIGURATION ---
+// 구글 앱스 스크립트(Google Apps Script) 웹 앱 배포 URL을 아래에 입력하세요.
+const GOOGLE_SHEETS_SCRIPT_URL = ''; 
+
 document.addEventListener('DOMContentLoaded', () => {
   // --- Navigation Smooth Scroll & Spy ---
   const navTabs = document.querySelectorAll('.nav-tab');
@@ -155,5 +159,73 @@ document.addEventListener('DOMContentLoaded', () => {
       toast.style.opacity = '0';
       toast.style.transform = 'translateX(-50%) translateY(20px)';
     }, 2000);
+  }
+
+  // --- Consultation Form Submission & Formatting ---
+  const consultForm = document.getElementById('consultForm');
+  const userPhone = document.getElementById('userPhone');
+  const formSuccess = document.getElementById('formSuccess');
+  const formSubmitBtn = document.getElementById('formSubmitBtn');
+
+  // Phone Auto Format (010-XXXX-XXXX)
+  if (userPhone) {
+    userPhone.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/[^0-9]/g, '');
+      if (value.length > 3 && value.length <= 7) {
+        value = value.slice(0, 3) + '-' + value.slice(3);
+      } else if (value.length > 7) {
+        value = value.slice(0, 3) + '-' + value.slice(3, 7) + '-' + value.slice(7, 11);
+      }
+      e.target.value = value;
+    });
+  }
+
+  // Form Submission
+  if (consultForm) {
+    consultForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Disable button & show loading
+      formSubmitBtn.classList.add('loading');
+      const originalBtnText = formSubmitBtn.innerHTML;
+      formSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>신청 중...</span>';
+
+      const formData = new FormData(consultForm);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      if (!GOOGLE_SHEETS_SCRIPT_URL) {
+        // Fallback for local testing when URL is empty
+        console.warn('Google Sheets Script URL is empty. Simulating success.');
+        setTimeout(() => {
+          consultForm.style.display = 'none';
+          formSuccess.style.display = 'block';
+        }, 1000);
+        return;
+      }
+
+      // Send to Google Sheets (using form-urlencoded to bypass CORS preflight)
+      const urlParams = new URLSearchParams(data);
+      fetch(GOOGLE_SHEETS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Critical: bypasses CORS redirect blocking in Apps Script
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: urlParams
+      })
+      .then(() => {
+        consultForm.style.display = 'none';
+        formSuccess.style.display = 'block';
+      })
+      .catch((error) => {
+        console.error('Error submitting form:', error);
+        alert('상담 신청 중 오류가 발생했습니다. 잠시 후 다시 시도해주시거나 전화로 연락주시기 바랍니다.');
+        formSubmitBtn.classList.remove('loading');
+        formSubmitBtn.innerHTML = originalBtnText;
+      });
+    });
   }
 });
