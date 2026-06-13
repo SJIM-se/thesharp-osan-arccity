@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상담 신청 완료 - 수원이목지구 디에트르 더리체Ⅱ</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- 
+    Meta Pixel Tracking Code Placeholder
+    ※ 여기에 메타 픽셀 코드를 붙여넣으세요.
+    예시:
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'YOUR_PIXEL_ID');
+      fbq('track', 'PageView');
+      fbq('track', 'Lead'); // 상담 신청 완료 (리드) 이벤트 추적
+    </script>
+  -->
+  
+  <style>
+    :root {
+      --primary-navy: #01183a;
+      --secondary-navy: #012f47;
+      --accent-gold: #c5a059;
+      --accent-gold-hover: #a37f3b;
+      --bg-light: #f3f6f9;
+      --text-dark: #1e293b;
+      --white: #ffffff;
+      --border-radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Noto Sans KR', 'Roboto', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .thankyou-card {
+      background-color: var(--white);
+      max-width: 500px;
+      width: 100%;
+      border-radius: var(--border-radius);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .thankyou-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-navy), var(--accent-gold));
+    }
+
+    .success-icon-wrap {
+      width: 80px;
+      height: 80px;
+      background-color: rgba(197, 160, 89, 0.1);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 24px auto;
+      color: var(--accent-gold);
+      font-size: 36px;
+      animation: scaleUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s both;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: var(--primary-navy);
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    p {
+      font-size: 15px;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .info-box {
+      background-color: #f8fafc;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 30px;
+      text-align: left;
+      font-size: 14px;
+      border-left: 3px solid var(--accent-gold);
+    }
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .info-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-label {
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .info-val {
+      color: var(--primary-navy);
+      font-weight: 600;
+    }
+
+    .home-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: var(--primary-navy);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(1, 24, 58, 0.15);
+      width: 100%;
+    }
+
+    .home-btn:hover {
+      background-color: var(--secondary-navy);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(1, 24, 58, 0.25);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleUp {
+      from {
+        opacity: 0;
+        transform: scale(0.6);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="thankyou-card">
+    <div class="success-icon-wrap">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    <h1>상담 신청이 완료되었습니다</h1>
+    <p>입력하신 연락처로 전문 상담사가 신속히 연락해 드리겠습니다. 관심을 가져주셔서 대단히 감사합니다.</p>
+    
+    <div class="info-box">
+      <div class="info-item">
+        <span class="info-label">신청 항목</span>
+        <span class="info-val">수원이목지구 디에트르 더리체Ⅱ</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">상담 구분</span>
+        <span class="info-val">전문 상담사 배정 안내</span>
+      </div>
+    </div>
+
+    <a href="index.html" class="home-btn">
+      <i class="fa-solid fa-house"></i>
+      <span>메인 페이지로 돌아가기</span>
+    </a>
+  </div>
+
+</body>
+</html>

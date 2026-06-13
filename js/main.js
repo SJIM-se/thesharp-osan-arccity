@@ -200,8 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Fallback for local testing when URL is empty
         console.warn('Google Sheets Script URL is empty. Simulating success.');
         setTimeout(() => {
-          consultForm.style.display = 'none';
-          formSuccess.style.display = 'block';
+          window.location.href = 'thankyou.html';
         }, 1000);
         return;
       }
@@ -217,8 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         body: urlParams
       })
       .then(() => {
-        consultForm.style.display = 'none';
-        formSuccess.style.display = 'block';
+        window.location.href = 'thankyou.html';
       })
       .catch((error) => {
         console.error('Error submitting form:', error);
