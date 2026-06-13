@@ -6,17 +6,15 @@
   <title>수원이목지구 디에트르 더리체Ⅱ</title>
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="수원이목지구 디에트르 더리체Ⅱ 공식 분양 안내 페이지. 사전 방문 예약제 운영, 실시간 분양 문의 010-8414-9899.">
+  <meta name="description" content="수원이목지구 디에트르 더리체Ⅱ 공식 분양 안내 페이지. 사전 방문 예약제 운영 및 실시간 상담 신청.">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:type" content="website">
   <meta property="og:title" content="수원이목지구 디에트르 더리체Ⅱ">
-  <meta property="og:description" content="방문예약 및 상담 언제든 전화주세요~">
+  <meta property="og:description" content="방문예약 및 실시간 상담 신청을 접수하고 있습니다.">
   <meta property="og:url" content="https://photocard2.iwinv.net/DD27D?m=7765">
-  <meta property="og:image" content="images/DD27D/gangsuji_card.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1098">
-  <meta property="og:image:height" content="624">
-  <meta property="og:image:alt" content="수원이목지구 디에트르 더리체Ⅱ 포토명함">
+  <meta property="og:image" content="images/DD27D/upload/main_7.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="수원이목지구 디에트르 더리체Ⅱ 메인 이미지">
 
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,34 +50,69 @@
   <!-- Main Grid Layout -->
   <div class="main-container">
     
-    <!-- Left Column (Sticky Sidebar) -->
-    <aside class="sidebar">
-      <div class="sidebar-image-container">
-        <img src="images/DD27D/gangsuji_card.png" width="1098" height="624" alt="수원이목지구 디에트르 더리체Ⅱ 메인 이미지">
-      </div>
-      <div class="sidebar-info">
-        <h2 class="sidebar-title">사전예약 분양관</h2>
-        <p class="sidebar-subtitle">원활한 관람을 위해 사전예약으로 운영됩니다.</p>
+    <!-- Left Column (Sticky Sidebar with Consultation Form) -->
+    <aside class="sidebar" id="consult">
+      <div class="consult-container sidebar-consult">
+        <h3 class="sidebar-title"><i class="fa-solid fa-file-signature"></i> 실시간 상담 신청</h3>
+        <p class="consult-desc">정보를 입력해주시면 전문 상담사가 신속하게 연락드리겠습니다.</p>
         
-        <div class="sidebar-badges">
-          <div class="badge-item">
-            <i class="fa-solid fa-user-check"></i>
-            100% 담당자 지정 예약제
+        <form id="consultForm" class="consult-form">
+          <div class="form-group">
+            <label for="userName">고객명 <span class="required">*</span></label>
+            <input type="text" id="userName" name="name" required placeholder="이름을 입력해주세요.">
           </div>
-          <div class="badge-item">
-            <i class="fa-solid fa-phone-volume"></i>
-            방문 전 사전예약 필수
+          
+          <div class="form-group">
+            <label for="userPhone">연락처 <span class="required">*</span></label>
+            <input type="tel" id="userPhone" name="phone" required placeholder="휴대폰 번호를 입력해주세요." maxlength="13">
           </div>
-          <div class="badge-item">
-            <i class="fa-solid fa-calendar-days"></i>
-            연중무휴 상담 환영
+          
+          <div class="form-group">
+            <label for="unitType">관심 타입</label>
+            <select id="unitType" name="type">
+              <option value="선택안함">선택해주세요</option>
+              <option value="84A">84㎡ A 타입</option>
+              <option value="84B">84㎡ B 타입</option>
+              <option value="84C">84㎡ C 타입</option>
+              <option value="115A">115㎡ A 타입</option>
+              <option value="116B">116㎡ B 타입</option>
+              <option value="139A">139㎡ A 타입</option>
+              <option value="141B">141㎡ B 타입</option>
+            </select>
           </div>
+          
+          <div class="form-group">
+            <label for="userMessage">상담 내용 (선택)</label>
+            <textarea id="userMessage" name="message" rows="3" placeholder="궁금하신 점이나 상담 희망 시간을 입력해주세요."></textarea>
+          </div>
+          
+          <div class="form-agreement">
+            <label class="agreement-label">
+              <input type="checkbox" id="privacyAgree" required>
+              <span>[필수] 개인정보 수집 및 이용 동의</span>
+            </label>
+            <div class="agreement-box">
+              수원이목지구 디에트르 더리체Ⅱ 홍보관은 고객 상담 및 사전예약 접수를 위해 아래와 같이 개인정보를 수집하고 있습니다.<br>
+              - 수집 항목: 이름, 연락처, 관심타입, 상담내용<br>
+              - 수집 목적: 분양 상담 및 방문 안내 연락<br>
+              - 보유 기간: 분양 완료 후 즉시 파기
+            </div>
+          </div>
+          
+          <button type="submit" class="form-submit-btn" id="formSubmitBtn">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>상담 신청하기</span>
+          </button>
+        </form>
+        
+        <!-- Success Message -->
+        <div id="formSuccess" class="form-success-container" style="display: none;">
+          <div class="success-icon">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <h4>상담 신청이 완료되었습니다!</h4>
+          <p>입력하신 연락처로 전문 상담사가 신속히 연락해 드리겠습니다. 감사합니다.</p>
         </div>
-
-        <a href="tel:010-8414-9899" class="sidebar-cta-btn" id="sidebarCallBtn">
-          <i class="fa-solid fa-phone-flip"></i>
-          문의: 010-8414-9899
-        </a>
       </div>
     </aside>
 
@@ -255,76 +288,7 @@
         </div>
       </section>
 
-      <!-- Consultation Section -->
-      <section id="consult" class="section">
-        <div class="section-title-container">
-          <div class="section-line"></div>
-          <h3 class="section-title">실시간 상담 신청</h3>
-          <div class="section-line"></div>
-        </div>
-        
-        <div class="consult-container">
-          <p class="consult-desc">정보를 입력해주시면 전문 상담사가 신속하게 연락드리겠습니다.</p>
-          
-          <form id="consultForm" class="consult-form">
-            <div class="form-group">
-              <label for="userName">고객명 <span class="required">*</span></label>
-              <input type="text" id="userName" name="name" required placeholder="이름을 입력해주세요.">
-            </div>
-            
-            <div class="form-group">
-              <label for="userPhone">연락처 <span class="required">*</span></label>
-              <input type="tel" id="userPhone" name="phone" required placeholder="휴대폰 번호를 입력해주세요." maxlength="13">
-            </div>
-            
-            <div class="form-group">
-              <label for="unitType">관심 타입</label>
-              <select id="unitType" name="type">
-                <option value="선택안함">선택해주세요</option>
-                <option value="84A">84㎡ A 타입</option>
-                <option value="84B">84㎡ B 타입</option>
-                <option value="84C">84㎡ C 타입</option>
-                <option value="115A">115㎡ A 타입</option>
-                <option value="116B">116㎡ B 타입</option>
-                <option value="139A">139㎡ A 타입</option>
-                <option value="141B">141㎡ B 타입</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="userMessage">상담 내용 (선택)</label>
-              <textarea id="userMessage" name="message" rows="3" placeholder="궁금하신 점이나 상담 희망 시간을 입력해주세요."></textarea>
-            </div>
-            
-            <div class="form-agreement">
-              <label class="agreement-label">
-                <input type="checkbox" id="privacyAgree" required>
-                <span>[필수] 개인정보 수집 및 이용 동의</span>
-              </label>
-              <div class="agreement-box">
-                수원이목지구 디에트르 더리체Ⅱ 홍보관은 고객 상담 및 사전예약 접수를 위해 아래와 같이 개인정보를 수집하고 있습니다.<br>
-                - 수집 항목: 이름, 연락처, 관심타입, 상담내용<br>
-                - 수집 목적: 분양 상담 및 방문 안내 연락<br>
-                - 보유 기간: 분양 완료 후 즉시 파기
-              </div>
-            </div>
-            
-            <button type="submit" class="form-submit-btn" id="formSubmitBtn">
-              <i class="fa-solid fa-paper-plane"></i>
-              <span>상담 신청하기</span>
-            </button>
-          </form>
-          
-          <!-- Success Message -->
-          <div id="formSuccess" class="form-success-container" style="display: none;">
-            <div class="success-icon">
-              <i class="fa-solid fa-circle-check"></i>
-            </div>
-            <h4>상담 신청이 완료되었습니다!</h4>
-            <p>입력하신 연락처로 전문 상담사가 신속히 연락해 드리겠습니다. 감사합니다.</p>
-          </div>
-        </div>
-      </section>
+
     </main>
 
   </div>
@@ -334,8 +298,8 @@
     <div class="footer-content">
       <address>
         <strong>수원이목지구 디에트르 더리체Ⅱ 홍보관</strong><br>
-        대표전화: 010-8414-9899 | 담당: 지정 예약제 분양 전문가<br>
-        © 수원이목지구 디에트르 더리체Ⅱ 포토명함. All rights reserved.
+        담당: 지정 예약제 분양 전문가<br>
+        © 수원이목지구 디에트르 더리체Ⅱ. All rights reserved.
       </address>
       <p class="disclaimer">※ 본 웹사이트는 고객의 이해를 돕기 위해 원본 리소스를 기반으로 편집 및 제작된 홍보 웹페이지입니다. 사용된 이미지 및 평면 정보는 제작 시기에 따라 실제와 상이할 수 있으므로 분양홍보관을 방문하여 최종 확인하시기 바랍니다.</p>
     </div>
@@ -352,9 +316,9 @@
 
   <!-- Mobile Fixed Bottom CTA -->
   <div class="mobile-fixed-cta">
-    <a href="tel:010-8414-9899" class="mobile-cta-btn" id="mobileCallBtn">
-      <i class="fa-solid fa-phone-volume"></i>
-      <span>☎ 010-8414-9899 전화 상담하기</span>
+    <a href="#consult" class="mobile-cta-btn" id="mobileConsultBtn">
+      <i class="fa-solid fa-paper-plane"></i>
+      <span>실시간 상담 신청하기</span>
     </a>
   </div>
 
