@@ -19,3 +19,6 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+# IDE/Agent databases
+antigravity.db
