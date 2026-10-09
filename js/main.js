@@ -1,6 +1,6 @@
 // --- CONFIGURATION ---
 // 구글 앱스 스크립트(Google Apps Script) 웹 앱 배포 URL을 아래에 입력하세요.
-const GOOGLE_SHEETS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwOaYEhuHoVFDkRNZYZhlgBbfk4jwxWWsgIf2Ozqd0bByroS8TcMSMdGd4n98eQIYSAhA/exec'; 
+const GOOGLE_SHEETS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyku3dkPb3vZmFEQ_s-_1r5TGo7cHGqjjnlQx2PDbJOg2Vcmr7l9OoO-K8kQk_UmCkv/exec'; 
 
 document.addEventListener('DOMContentLoaded', () => {
   // --- Navigation Smooth Scroll & Spy ---
