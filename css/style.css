@@ -127,16 +127,34 @@ html {
   position: sticky;
   top: 80px;
   max-height: calc(100vh - 100px);
+  overflow-x: hidden;
   overflow-y: auto;
+  overscroll-behavior: contain;
   scrollbar-width: thin;
-  scrollbar-color: #d6dde6 transparent;
+  scrollbar-color: #c9b88f transparent;
   background-color: var(--white);
   border-radius: var(--border-radius);
   box-shadow: var(--card-shadow);
   border: 1px solid rgba(0, 0, 0, 0.05);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  display: block;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 10px 0;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #d8c9a6;
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-gold);
 }
 
 .sidebar-consult {
