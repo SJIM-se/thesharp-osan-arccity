@@ -823,6 +823,37 @@ html {
   .event-banner { padding: 20px 15px 0; }
 }
 
+/* Mobile Consultation Section (under Starbucks Banner) */
+.mobile-consult-section {
+  display: none;
+  scroll-margin-top: 130px;
+}
+
+@media (max-width: 992px) {
+  .mobile-consult-section {
+    display: block;
+    padding: 20px 30px 0;
+  }
+
+  .mobile-consult-section .consult-container {
+    background: #ffffff;
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+    border-radius: var(--border-radius);
+    padding: 26px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .mobile-consult-section {
+    padding: 16px 15px 0;
+  }
+
+  .mobile-consult-section .consult-container {
+    padding: 20px 16px;
+  }
+}
+
 /* Section divider */
 .consult-divider {
   display: flex;

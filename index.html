@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css?v=20261010c">
+  <link rel="stylesheet" href="css/style.css?v=20261010d">
 </head>
 <body>
 
@@ -152,6 +152,60 @@
       <div class="event-banner">
         <img src="images/thesharp_osan/event_starbucks_v3.png" width="1024" height="1024" alt="방문 이벤트 - 선착순 30명 스타벅스 1만원권 증정">
       </div>
+
+      <!-- Mobile Only: Consultation Form under Starbucks Event Banner -->
+      <section class="mobile-consult-section" id="consultMobile">
+        <div class="consult-container">
+          <div class="consult-divider">
+            <span><i class="fa-solid fa-file-signature"></i> 실시간 상담 신청</span>
+          </div>
+          <p class="consult-desc">정보를 입력해주시면 전문 상담사가 신속하게 연락드리겠습니다.</p>
+          
+          <form class="consult-form" id="consultFormMobile">
+            <div class="form-group">
+              <label for="userNameMobile">고객명 <span class="required">*</span></label>
+              <input type="text" id="userNameMobile" name="name" required placeholder="이름을 입력해주세요.">
+            </div>
+            
+            <div class="form-group">
+              <label for="userPhoneMobile">연락처 <span class="required">*</span></label>
+              <input type="tel" id="userPhoneMobile" name="phone" required placeholder="휴대폰 번호를 입력해주세요." maxlength="13">
+            </div>
+            
+            <div class="form-group">
+              <label for="unitTypeMobile">관심 타입</label>
+              <select id="unitTypeMobile" name="type">
+                <option value="선택안함">선택해주세요</option>
+                <option value="84OA">84㎡ OA 타입</option>
+                <option value="84OB">84㎡ OB 타입</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="userMessageMobile">상담 내용 (선택)</label>
+              <textarea id="userMessageMobile" name="message" rows="3" placeholder="궁금하신 점이나 상담 희망 시간을 입력해주세요."></textarea>
+            </div>
+            
+            <div class="form-agreement">
+              <label class="agreement-label">
+                <input type="checkbox" id="privacyAgreeMobile" required>
+                <span>[필수] <a href="privacy/" target="_blank" style="text-decoration: underline; color: var(--accent-gold);">개인정보 수집 및 이용 동의</a></span>
+              </label>
+              <div class="agreement-box">
+                더샵 오산역 아크시티 홍보관은 고객 상담 및 사전예약 접수를 위해 아래와 같이 개인정보를 수집하고 있습니다.<br>
+                - 수집 항목: 이름, 연락처, 관심타입, 상담내용<br>
+                - 수집 목적: 분양 상담 및 방문 안내 연락<br>
+                - 보유 기간: 분양 완료 후 즉시 파기
+              </div>
+            </div>
+            
+            <button type="submit" class="form-submit-btn">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>상담 신청하기</span>
+            </button>
+          </form>
+        </div>
+      </section>
 
       <!-- 대표번호 전화 연결 (0) - 분양관 소개 위 -->
       <div class="call-strip-wrap call-strip-top">
@@ -392,7 +446,7 @@
         <i class="fa-solid fa-phone"></i>
         <span>전화 상담</span>
       </a>
-      <a href="#consult" class="mobile-cta-btn consult" id="mobileConsultBtn">
+      <a href="#consultMobile" class="mobile-cta-btn consult" id="mobileConsultBtn">
         <i class="fa-solid fa-paper-plane"></i>
         <span>상담 신청하기</span>
       </a>
@@ -400,6 +454,6 @@
   </div>
 
   <!-- JavaScript -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20261010d"></script>
 </body>
 </html>

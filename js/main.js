@@ -12,7 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
   navTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       const targetId = tab.getAttribute('data-target');
-      const targetSection = document.getElementById(targetId);
+      let targetSection = document.getElementById(targetId);
+
+      // On mobile screen, scroll to the top mobile consultation form when clicking 'consult'
+      if (window.innerWidth <= 992 && targetId === 'consult') {
+        const mobileTarget = document.getElementById('consultMobile');
+        if (mobileTarget) {
+          targetSection = mobileTarget;
+        }
+      }
 
       if (targetSection) {
         // Remove active class from all tabs
@@ -161,36 +169,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000);
   }
 
-  // --- Consultation Form Submission & Formatting ---
-  const consultForm = document.getElementById('consultForm');
-  const userPhone = document.getElementById('userPhone');
-  const formSuccess = document.getElementById('formSuccess');
-  const formSubmitBtn = document.getElementById('formSubmitBtn');
+  // --- Consultation Forms Submission & Formatting (Multiple Forms Support) ---
+  const consultForms = document.querySelectorAll('.consult-form');
 
-  // Phone Auto Format (010-XXXX-XXXX)
-  if (userPhone) {
-    userPhone.addEventListener('input', (e) => {
-      let value = e.target.value.replace(/[^0-9]/g, '');
-      if (value.length > 3 && value.length <= 7) {
-        value = value.slice(0, 3) + '-' + value.slice(3);
-      } else if (value.length > 7) {
-        value = value.slice(0, 3) + '-' + value.slice(3, 7) + '-' + value.slice(7, 11);
-      }
-      e.target.value = value;
-    });
-  }
+  consultForms.forEach(form => {
+    const phoneInput = form.querySelector('input[type="tel"]');
+    const submitBtn = form.querySelector('.form-submit-btn');
 
-  // Form Submission
-  if (consultForm) {
-    consultForm.addEventListener('submit', (e) => {
+    // Phone Auto Format (010-XXXX-XXXX)
+    if (phoneInput) {
+      phoneInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/[^0-9]/g, '');
+        if (value.length > 3 && value.length <= 7) {
+          value = value.slice(0, 3) + '-' + value.slice(3);
+        } else if (value.length > 7) {
+          value = value.slice(0, 3) + '-' + value.slice(3, 7) + '-' + value.slice(7, 11);
+        }
+        e.target.value = value;
+      });
+    }
+
+    // Form Submission
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      // Disable button & show loading
-      formSubmitBtn.classList.add('loading');
-      const originalBtnText = formSubmitBtn.innerHTML;
-      formSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>신청 중...</span>';
+      let originalBtnText = '';
+      if (submitBtn) {
+        submitBtn.classList.add('loading');
+        originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>신청 중...</span>';
+      }
 
-      const formData = new FormData(consultForm);
+      const formData = new FormData(form);
       const data = {};
       formData.forEach((value, key) => {
         data[key] = value;
@@ -221,9 +231,23 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch((error) => {
         console.error('Error submitting form:', error);
         alert('상담 신청 중 오류가 발생했습니다. 잠시 후 다시 시도해주시거나 전화로 연락주시기 바랍니다.');
-        formSubmitBtn.classList.remove('loading');
-        formSubmitBtn.innerHTML = originalBtnText;
+        if (submitBtn) {
+          submitBtn.classList.remove('loading');
+          submitBtn.innerHTML = originalBtnText;
+        }
       });
+    });
+  });
+
+  // Mobile Bottom CTA Consult Button Click
+  const mobileConsultBtn = document.getElementById('mobileConsultBtn');
+  if (mobileConsultBtn) {
+    mobileConsultBtn.addEventListener('click', (e) => {
+      const target = document.getElementById('consultMobile') || document.getElementById('consult');
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   }
 });
