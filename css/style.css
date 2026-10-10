@@ -538,16 +538,21 @@ html {
   }
 }
 
-/* Sidebar Call Card */
+/* Call Card (sidebar + between sections) - centered layout */
 .call-card {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 14px;
-  padding: 16px 16px;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+  padding: 16px 14px 18px;
   margin-bottom: 14px;
   border-radius: 14px;
-  background: linear-gradient(135deg, #01183a 0%, #0b3a5c 100%);
+  background:
+    radial-gradient(ellipse 70% 90% at 50% 0%, rgba(197, 160, 89, 0.22) 0%, transparent 70%),
+    linear-gradient(135deg, #01183a 0%, #0b3a5c 100%);
   color: #fff;
   text-decoration: none;
   overflow: hidden;
@@ -578,18 +583,40 @@ html {
   box-shadow: 0 12px 26px rgba(1, 24, 58, 0.3);
 }
 
+.call-card:active {
+  transform: scale(0.98);
+}
+
+.call-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-gold);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+/* icon | number | (spacer) -> number stays exactly centered */
+.call-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  column-gap: 10px;
+  width: 100%;
+}
+
 .call-icon {
+  justify-self: end;
   position: relative;
   flex-shrink: 0;
-  width: 46px;
-  height: 46px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: linear-gradient(135deg, #e3c27f, #c5a059);
   color: #01183a;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 19px;
+  font-size: 15px;
 }
 
 .call-icon::before {
@@ -618,58 +645,58 @@ html {
   90% { transform: rotate(10deg); }
 }
 
-.call-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 1.2;
-}
-
-.call-label {
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--accent-gold);
-  letter-spacing: 0.3px;
-  margin-bottom: 4px;
-}
-
 .call-number {
   font-family: 'Roboto', 'Noto Sans KR', sans-serif;
-  font-size: clamp(19px, 5.6vw, 24px);
+  font-size: clamp(22px, 6.4vw, 27px);
   font-weight: 700;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
   color: #fff;
   white-space: nowrap;
 }
 
-.call-arrow {
-  flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  display: flex;
+.call-hint {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.8);
-  transition: background 0.25s ease, color 0.25s ease;
+  gap: 5px;
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
 }
 
-.call-card:hover .call-arrow {
-  background: var(--accent-gold);
-  border-color: var(--accent-gold);
-  color: #01183a;
+.call-hint i {
+  font-size: 9px;
+  color: var(--accent-gold);
 }
 
-.call-text { min-width: 0; }
-.call-label { white-space: nowrap; }
+/* Between-section call strip */
+.call-strip-wrap {
+  padding: 26px 30px;
+  border-bottom: 1px solid #f1f5f9;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
 
-@media (max-width: 400px) {
-  .call-card { gap: 10px; padding: 14px 12px; }
-  .call-icon { width: 40px; height: 40px; font-size: 16px; }
-  .call-arrow { width: 24px; height: 24px; font-size: 10px; }
+.call-strip-wrap .call-card {
+  margin: 0 auto;
+  max-width: 520px;
+  padding: 20px 16px 20px;
+}
+
+.call-strip-wrap .call-label {
+  font-size: 13px;
+}
+
+.call-strip-wrap.call-strip-top {
+  background: var(--white);
+  padding-top: 20px;
+}
+
+@media (max-width: 576px) {
+  .call-strip-wrap { padding: 18px 15px; }
+  .call-strip-wrap .call-card { padding: 16px 12px; }
+  .call-icon { width: 32px; height: 32px; font-size: 13px; }
+  .call-row { column-gap: 8px; }
 }
 
 /* Event Ticket in Sidebar Consult (Starbucks palette) */
@@ -784,8 +811,10 @@ html {
 
 .event-banner img {
   width: 100%;
+  max-width: 460px;
   height: auto;
   display: block;
+  margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
